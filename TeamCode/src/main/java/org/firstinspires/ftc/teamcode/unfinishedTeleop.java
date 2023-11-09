@@ -13,8 +13,8 @@ public class unfinishedTeleop extends LinearOpMode {
 
     // define drone servo
     private Servo drone;
-    private double DRONE_CLOSED = 0;
-    private double DRONE_OPEN = 0.2;
+    private final double DRONE_CLOSED = 0;
+    private final double DRONE_OPEN = 0.2;
 
     // creates variables for drive inputs from controllers
     private double forwardBackward, leftRight, rotate;
@@ -42,7 +42,7 @@ public class unfinishedTeleop extends LinearOpMode {
             driveBL.setPower(forwardBackward - leftRight + rotate);
             driveBR.setPower(forwardBackward + leftRight - rotate);
 
-            if (gamepad2.a == true) {
+            if (gamepad2.a) {
                 drone.setPosition(DRONE_OPEN);
             } else {
                 drone.setPosition(DRONE_CLOSED);
