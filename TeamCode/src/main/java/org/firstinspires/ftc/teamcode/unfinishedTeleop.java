@@ -12,7 +12,9 @@ public class unfinishedTeleop extends LinearOpMode {
     private DcMotor driveFL, driveFR, driveBL, driveBR;
 
     // define drone servo
-    public Servo drone;
+    private Servo drone;
+    private double DRONE_CLOSED = 0;
+    private double DRONE_OPEN = 0.2;
 
     // creates variables for drive inputs from controllers
     private double forwardBackward, leftRight, rotate;
@@ -40,10 +42,10 @@ public class unfinishedTeleop extends LinearOpMode {
             driveBL.setPower(forwardBackward - leftRight + rotate);
             driveBR.setPower(forwardBackward + leftRight - rotate);
 
-            if (gamepad2.a) {
-                if (drone.getPosition() < 0.2) drone.setPosition(drone.getPosition() + 0.02);
+            if (gamepad2.a == true) {
+                drone.setPosition(DRONE_OPEN);
             } else {
-                if (drone.getPosition() > 0) drone.setPosition(drone.getPosition() - 0.02);
+                drone.setPosition(DRONE_CLOSED);
             }
         }
     }
@@ -60,9 +62,9 @@ public class unfinishedTeleop extends LinearOpMode {
         driveBL = hardwareMap.get(DcMotor.class, "motorBL");
         driveBR = hardwareMap.get(DcMotor.class, "motorBR");
 
-        // get drone and set it to 0
+        // maps drone (servo) motor and closes it.
         drone = hardwareMap.get(Servo.class, "drone");
-        drone.setPosition(0);
+        drone.setPosition(DRONE_CLOSED);
 
         // sets left motors to reverse direction so they're going the right way
         driveFL.setDirection(DcMotor.Direction.REVERSE);
