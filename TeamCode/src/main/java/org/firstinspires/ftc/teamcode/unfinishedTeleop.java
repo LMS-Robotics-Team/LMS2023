@@ -40,7 +40,7 @@ public class unfinishedTeleop extends LinearOpMode {
             driveBL.setPower(forwardBackward - leftRight + rotate);
             driveBR.setPower(forwardBackward + leftRight - rotate);
 
-            if (gamepad1.a) {
+            if (gamepad2.a) {
                 if (drone.getPosition() < 0.2) drone.setPosition(drone.getPosition() + 0.02);
             } else {
                 if (drone.getPosition() > 0) drone.setPosition(drone.getPosition() - 0.02);
