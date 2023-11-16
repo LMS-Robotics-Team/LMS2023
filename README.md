@@ -1,3 +1,14 @@
+# Welcome!
+This is LMS's 2023-2024 Centerstage Competion Code Repository.
+
+Below is the original `README.md` 
+
+<br />
+
+----
+
+<br />
+
 ## NOTICE
 
 This repository contains the public FTC SDK for the CENTERSTAGE (2023-2024) competition season.
