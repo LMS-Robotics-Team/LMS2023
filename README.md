@@ -1,5 +1,5 @@
 # Welcome!
-This is LMS's 2023-2024 Centerstage Competion Code Repository.
+This is LMS's 2023-2024 Centerstage Competition Code Repository.
 
 Below is the original `README.md` 
 
