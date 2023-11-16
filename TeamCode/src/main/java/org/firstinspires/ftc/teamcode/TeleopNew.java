@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class unfinishedTeleop extends LinearOpMode {
+public class TeleopNew extends LinearOpMode {
 
     // sets variables for motors
     private DcMotor driveFL, driveFR, driveBL, driveBR;
