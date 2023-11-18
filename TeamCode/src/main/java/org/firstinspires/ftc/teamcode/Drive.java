@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Drive {
-    private static DcMotorEx driveFL, driveFR, driveBL, driveBR;;
+    private static DcMotorEx driveFL, driveFR, driveBL, driveBR;
 
-    public static final void init(HardwareMap hardwareMap) {
+    public static void init(HardwareMap hardwareMap) {
         // get motors from hardwareMap
         driveFL = hardwareMap.get(DcMotorEx.class, "motorFL");
         driveFR = hardwareMap.get(DcMotorEx.class, "motorFR");
@@ -25,7 +25,7 @@ public class Drive {
         driveBL.setDirection(DcMotorEx.Direction.REVERSE);
     }
 
-    public static final void HandleInput(Gamepad gamepad1) {
+    public static void HandleInput(Gamepad gamepad1) {
         // sets values of variables for gamepad1 (start+a) inputs for driving
         // creates variables for drive inputs from controllers
         double ForwardBackward = -gamepad1.left_stick_y;
