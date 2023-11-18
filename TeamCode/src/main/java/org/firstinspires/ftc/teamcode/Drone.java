@@ -11,7 +11,7 @@ public class Drone {
         Drone.setPosition(0);
     }
 
-    public static final void launch() {
-        Drone.setPosition(0.2);
+    public static final void HandleInput(boolean gamepad2_a) {
+        if (gamepad2_a) Drone.setPosition(0.2);
     }
 }
