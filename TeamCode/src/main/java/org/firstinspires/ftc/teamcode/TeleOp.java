@@ -17,7 +17,7 @@ public class TeleOp extends LinearOpMode {
 
         // runs until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            // Each class handles it's own input from the values passed in
+            // Each class handles it's own input from the gamepad passed in.
             Drive.HandleInput(gamepad1);
             Drone.HandleInput(gamepad2);
             Flag.HandleInput(gamepad2);
