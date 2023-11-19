@@ -6,9 +6,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Drone {
     private static Servo DroneHeight, DroneLaunch;
+
+    // Set constants for servos
     private final static double DRONE_OPEN = 0.2, DRONE_CLOSED = 0, DRONE_DOWN = 0.25, DRONE_UP = 0.75;
 
     public static void init(HardwareMap hardwareMap) {
+        // Init servos and set them to their default values
         DroneHeight = hardwareMap.get(Servo.class, "DroneHeight");
         DroneHeight.setPosition(DRONE_DOWN);
 
@@ -16,6 +19,7 @@ public class Drone {
         DroneLaunch.setPosition(DRONE_CLOSED);
     }
 
+    // For TeleOp
     public static void HandleInput(Gamepad gamepad2) {
         if (gamepad2.a && gamepad2.x) DroneLaunch.setPosition(DRONE_OPEN);
         else DroneLaunch.setPosition(DRONE_CLOSED);
