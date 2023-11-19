@@ -32,10 +32,17 @@ public class Drive {
         double LeftRight = gamepad1.left_stick_x;
         double Rotate = gamepad1.right_trigger - gamepad1.left_trigger;
 
-        // set drive powers
-        driveFL.setPower(ForwardBackward + LeftRight + Rotate);
-        driveFR.setPower(ForwardBackward - LeftRight - Rotate);
-        driveBL.setPower(ForwardBackward - LeftRight + Rotate);
-        driveBR.setPower(ForwardBackward + LeftRight - Rotate);
+        // set drive powers and if pressing a, half speed.
+        if (gamepad1.a) {
+            driveFL.setPower((ForwardBackward + LeftRight + Rotate) / 2);
+            driveFR.setPower((ForwardBackward - LeftRight - Rotate) / 2);
+            driveBL.setPower((ForwardBackward - LeftRight + Rotate) / 2);
+            driveBR.setPower((ForwardBackward + LeftRight - Rotate) / 2);
+        } else {
+            driveFL.setPower(ForwardBackward + LeftRight + Rotate);
+            driveFR.setPower(ForwardBackward - LeftRight - Rotate);
+            driveBL.setPower(ForwardBackward - LeftRight + Rotate);
+            driveBR.setPower(ForwardBackward + LeftRight - Rotate);
+        }
     }
 }

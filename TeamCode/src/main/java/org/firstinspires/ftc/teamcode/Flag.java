@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -12,8 +13,8 @@ public class Flag {
         Flag.setPosition(FLAG_CLOSED);
     }
 
-    public static void HandleInput(boolean gamepad2_b) {
-        if (gamepad2_b) {
+    public static void HandleInput(Gamepad gamepad2) {
+        if (gamepad2.b) {
             Flag.setPosition(FLAG_OPEN);
         } else {
             Flag.setPosition(FLAG_CLOSED);
