@@ -14,6 +14,12 @@ public class Drive {
         driveBL = hardwareMap.get(DcMotorEx.class, "motorBL");
         driveBR = hardwareMap.get(DcMotorEx.class, "motorBR");
 
+        // Reset encoders
+        SetMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+
+        // Set to default drive mode
+        SetMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+
         // Turn the motors off (set power to 0)
         driveFL.setPower(0);
         driveFR.setPower(0);
@@ -47,11 +53,20 @@ public class Drive {
         }
     }
 
+    private static void SetMode(DcMotorEx.RunMode mode) {
+        driveFL.setMode(mode);
+        driveFR.setMode(mode);
+        driveBL.setMode(mode);
+        driveBR.setMode(mode);
+    }
+
     // For Autonomous
-    public static void SetPower(double LeftPower, double RightPower) {
-        driveFL.setPower(LeftPower);
-        driveFR.setPower(RightPower);
-        driveBL.setPower(LeftPower);
-        driveBR.setPower(RightPower);
+    public static void MoveTo(int ticks) {
+        driveFL.setTargetPosition(ticks);
+        driveFR.setTargetPosition(ticks);
+        driveBL.setTargetPosition(ticks);
+        driveBR.setTargetPosition(ticks);
+
+        SetMode(DcMotorEx.RunMode.RUN_TO_POSITION);
     }
 }

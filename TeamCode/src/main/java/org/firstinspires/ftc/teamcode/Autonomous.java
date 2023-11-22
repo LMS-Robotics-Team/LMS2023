@@ -12,6 +12,8 @@ public class Autonomous extends LinearOpMode {
         // Wait (based on other team)
         // sleep()
 
-        while (opModeIsActive()) {}
+        while (opModeIsActive()) {
+            Drive.MoveTo(10);
+        }
     }
 }
