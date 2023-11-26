@@ -16,9 +16,6 @@ public class Drive {
         // Reset encoders
         SetMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
 
-        // Set to drive mode
-        SetMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-
         // Set left motors to go reverse (relative to motor, not chassis).
         driveFL.setDirection(DcMotorEx.Direction.REVERSE);
         driveBL.setDirection(DcMotorEx.Direction.REVERSE);
@@ -33,11 +30,11 @@ public class Drive {
     }
 
     // Sets speed for motors to reach target distance
-    public static void SetSpeed(double power) {
-        driveFL.setPower(power);
-        driveFR.setPower(power);
-        driveBL.setPower(power);
-        driveBR.setPower(power);
+    public static void SetSpeed(double leftPower, double rightPower) {
+        driveFL.setPower(leftPower);
+        driveFR.setPower(rightPower);
+        driveBL.setPower(leftPower);
+        driveBR.setPower(rightPower);
     }
 
     // Set the motor's mode
