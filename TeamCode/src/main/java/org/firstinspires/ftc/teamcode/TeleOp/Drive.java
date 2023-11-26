@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -14,18 +14,6 @@ public class Drive {
         driveBL = hardwareMap.get(DcMotorEx.class, "motorBL");
         driveBR = hardwareMap.get(DcMotorEx.class, "motorBR");
 
-        // Reset encoders
-        SetMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
-
-        // Set to default drive mode
-        SetMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
-
-        // Turn the motors off (set power to 0)
-        driveFL.setPower(0);
-        driveFR.setPower(0);
-        driveBL.setPower(0);
-        driveBR.setPower(0);
-
         // Set left motors to go reverse (relative to motor, not chassis).
         driveFL.setDirection(DcMotorEx.Direction.REVERSE);
         driveBL.setDirection(DcMotorEx.Direction.REVERSE);
@@ -36,10 +24,10 @@ public class Drive {
         // Sets values of variables for gamepad1 (start+a) inputs for driving
         // Creates variables for drive inputs from controllers
         double ForwardBackward = -gamepad1.left_stick_y;
-        double LeftRight = gamepad1.left_stick_x;
+        double LeftRight = gamepad1.right_stick_x;
         double Rotate = gamepad1.right_trigger - gamepad1.left_trigger;
 
-        // Set drive powers and if pressing a, half speed.
+        // Set drive powers and if pressing a, half the speed.
         if (gamepad1.a) {
             driveFL.setPower((ForwardBackward + LeftRight + Rotate) / 2);
             driveFR.setPower((ForwardBackward - LeftRight - Rotate) / 2);
@@ -51,22 +39,5 @@ public class Drive {
             driveBL.setPower(ForwardBackward - LeftRight + Rotate);
             driveBR.setPower(ForwardBackward + LeftRight - Rotate);
         }
-    }
-
-    private static void SetMode(DcMotorEx.RunMode mode) {
-        driveFL.setMode(mode);
-        driveFR.setMode(mode);
-        driveBL.setMode(mode);
-        driveBR.setMode(mode);
-    }
-
-    // For Autonomous
-    public static void MoveTo(int ticks) {
-        driveFL.setTargetPosition(ticks);
-        driveFR.setTargetPosition(ticks);
-        driveBL.setTargetPosition(ticks);
-        driveBR.setTargetPosition(ticks);
-
-        SetMode(DcMotorEx.RunMode.RUN_TO_POSITION);
     }
 }
