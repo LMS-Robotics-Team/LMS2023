@@ -1,9 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import org.firstinspires.ftc.teamcode.TeleOp.Drive;
+import org.firstinspires.ftc.teamcode.TeleOp.Drone;
+import org.firstinspires.ftc.teamcode.TeleOp.Flag;
+import org.firstinspires.ftc.teamcode.TeleOp.Intake;
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp
-public class TeleOp extends LinearOpMode {
+public class DriverTeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
         // Init
@@ -11,6 +15,9 @@ public class TeleOp extends LinearOpMode {
         Drone.init(hardwareMap);
         Flag.init(hardwareMap);
         Intake.init(hardwareMap);
+
+        telemetry.addData("DEBUG", "Initialization Finished");
+        telemetry.update();
 
         // wait for the game to start (driver presses PLAY)
         waitForStart();
